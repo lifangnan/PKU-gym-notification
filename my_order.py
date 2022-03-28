@@ -185,7 +185,20 @@ class PKUVenue():
 
 	def orderBadminton(self, reqList):
 		reqDict = self._reqListToDict(reqList)
+
+		# 当前可以订的场的日期
+		now = datetime.datetime.now()
+		if(now.time() < datetime.time(hour=12)):
+			before_date = now.date()+datetime.timedelta(days=2)
+		else:
+			before_date = now.date()+datetime.timedelta(days=3)
+
+		str_before_date = before_date.strftime("%Y-%m-%d")
+
 		for orderDate in reqDict:
+			# 不在可预定的时间，则跳过
+			if(orderDate > str_before_date):
+				continue
 			for i in range(0, len(reqDict[orderDate]), 2):
 				self.orderBadmintonOnce(orderDate, reqDict[orderDate][i:i+2])
 				self.orderBadmintonOnce_54(orderDate, reqDict[orderDate][i:i+2])
@@ -240,7 +253,7 @@ def main():
 			last_datetime = now_datetime
 
 		# 起止时间
-		start_time = datetime.time(hour=7, minute=0)
+		start_time = datetime.time(hour=6, minute=0)
 		end_time = datetime.time(hour=23, minute=59)
 		if(now_time > start_time and now_time < end_time):
 			for k in config["order"].keys():
