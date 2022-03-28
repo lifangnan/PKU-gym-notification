@@ -6,9 +6,9 @@ class Browser():
     def __init__(self):
         chrome_options=Options()
         chrome_options.add_argument('--headless')
-        chromedriver = "C:/Program Files/Google/Chrome/Application/chromedriver.exe"
-        # self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path="./chromedriver")
-        self.browser = webdriver.Chrome(chromedriver, chrome_options=chrome_options)
+        # chromedriver = "C:/Program Files/Google/Chrome/Application/chromedriver.exe"
+        self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path="./chromedriver")
+        # self.browser = webdriver.Chrome(chromedriver, chrome_options=chrome_options)
 
 
     def clickByXPath(self, xpath):

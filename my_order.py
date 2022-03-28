@@ -224,7 +224,7 @@ class PKUVenue():
 friends_list = ["文件传输助手"]
 
 def main():
-	with open("pku-venue-order/config.json", "r", encoding="utf8") as f:
+	with open("./config.json", "r", encoding="utf8") as f:
 		config = json.load(f)
 
 	last_datetime = datetime.datetime(year=2000, month=1, day=1)
