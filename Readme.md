@@ -27,8 +27,16 @@
 ```
 
 ### 运行
-main.py line 51为提交订单按钮，非尝试运行取消注释，预约成功后应在十分钟内手动付款。
-填充完成config.json。在238服务器上，google chrome环境已有。装好相应python package即可。
-```shell
-python main.py
-```
+main.py来自源项目
+
+- 需安装python包pyautogui、pyperclip、selenium
+- 需注意文件路径，修改为自己的路径
+- 需下载自己电脑Chrome浏览器对应版本的ChromeDriver
+- 不提倡提交订单
+
+- 对源程序进行了一些拙劣的修改，增加了五四体育场羽毛球场的空场查询
+- my_order.py 将不提交订单，将使用win + alt + w 的快捷键打开微信，发送相关提示消息
+
+'''
+python my_order.py
+'''
