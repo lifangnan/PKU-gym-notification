@@ -193,11 +193,9 @@ class PKUVenue():
 		else:
 			before_date = now.date()+datetime.timedelta(days=3)
 
-		str_before_date = before_date.strftime("%Y-%m-%d")
-
 		for orderDate in reqDict:
 			# 不在可预定的时间，则跳过
-			if(orderDate > str_before_date):
+			if( datetime.datetime.strptime(orderDate, "%Y-%m-%d").date() > before_date):
 				continue
 			for i in range(0, len(reqDict[orderDate]), 2):
 				self.orderBadmintonOnce(orderDate, reqDict[orderDate][i:i+2])
@@ -247,7 +245,7 @@ def main():
 		now_time = now_datetime.time()
 
 		# 距离上次查询超过1小时，则重新登陆
-		if(now_datetime - last_datetime > datetime.timedelta(hours=1)):
+		if(now_datetime - last_datetime > datetime.timedelta(minutes=30)):
 			pkuvenue = PKUVenue(config["user_info"])
 			pkuvenue.login()
 			last_datetime = now_datetime
